@@ -1,0 +1,22 @@
+{
+  "createdBy": "draft.dev",
+  "name": "CEO_final_interview_orkes",
+  "retryCount": 3,
+  "timeoutSeconds": 30,
+  "inputKeys": [
+    "selected"
+  ],
+  "outputKeys": [
+    "sendOffer"
+  ],
+  "timeoutPolicy": "TIME_OUT_WF",
+  "retryLogic": "FIXED",
+  "retryDelaySeconds": 30,
+  "responseTimeoutSeconds": 30,
+  "concurrentExecLimit": 100,
+  "inputTemplate": {},
+  "rateLimitPerFrequency": 50,
+  "rateLimitFrequencyInSeconds": 30,
+  "pollTimeoutSeconds": 30,
+  "backoffScaleFactor": 1
+}

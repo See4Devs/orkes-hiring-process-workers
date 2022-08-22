@@ -1,0 +1,145 @@
+{
+  "name": "Hiring_HR_Workflow_Orkes",
+  "description": "Hiring HR Workflow ORKES",
+  "version": 1,
+  "tasks": [
+    {
+      "name": "hr_interview_orkes",
+      "taskReferenceName": "hr_interview_orkes_ref",
+      "inputParameters": {
+        "name": "${workflow.input.name}",
+        "street": "${workflow.input.firstname}",
+        "city": "${workflow.input.age}",
+        "state": "${workflow.input.position}"
+      },
+      "type": "SIMPLE",
+      "decisionCases": {},
+      "defaultCase": [],
+      "forkTasks": [],
+      "startDelay": 0,
+      "joinOn": [],
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopOver": []
+    },
+    {
+      "name": "passed_hr_interview",
+      "taskReferenceName": "passed_hr_interview_ref",
+      "inputParameters": {
+        "hrinterview": "${hr_interview_orkes_ref.output.selected}"
+      },
+      "type": "SWITCH",
+      "decisionCases": {
+        "true": [
+          {
+            "name": "technical_interview_orkes",
+            "taskReferenceName": "technical_interview_orkes_ref",
+            "inputParameters": {},
+            "type": "SIMPLE",
+            "decisionCases": {},
+            "defaultCase": [],
+            "forkTasks": [],
+            "startDelay": 0,
+            "joinOn": [],
+            "optional": false,
+            "defaultExclusiveJoinTask": [],
+            "asyncComplete": false,
+            "loopOver": []
+          },
+
+
+          {
+            "name": "passed_technical_interview",
+            "taskReferenceName": "passed_technical_interview_ref",
+            "inputParameters": {
+              "passedTechInterview": "${technical_interview_orkes_ref.output.selected}"
+            },
+            "type": "SWITCH",
+            "decisionCases": {
+              "true": [
+                {
+                  "name": "CEO_final_interview_orkes",
+                  "taskReferenceName": "CEO_final_interview_orkes_ref",
+                  "inputParameters": {},
+                  "type": "SIMPLE",
+                  "decisionCases": {},
+                  "defaultCase": [],
+                  "forkTasks": [],
+                  "startDelay": 0,
+                  "joinOn": [],
+                  "optional": false,
+                  "defaultExclusiveJoinTask": [],
+                  "asyncComplete": false,
+                  "loopOver": []
+                }
+              ]
+            },
+            "defaultCase": [
+              {
+                "name": "rejection_interview_orkes",
+                "taskReferenceName": "rejection_interview_orkes",
+                "inputParameters": {},
+                "type": "SIMPLE",
+                "decisionCases": {},
+                "defaultCase": [],
+                "forkTasks": [],
+                "startDelay": 0,
+                "joinOn": [],
+                "optional": false,
+                "defaultExclusiveJoinTask": [],
+                "asyncComplete": false,
+                "loopOver": []
+              }
+            ],
+            "forkTasks": [],
+            "startDelay": 0,
+            "joinOn": [],
+            "optional": false,
+            "defaultExclusiveJoinTask": [],
+            "asyncComplete": false,
+            "loopOver": [],
+            "evaluatorType": "value-param",
+            "expression": "passedTechInterview"
+          }
+
+        ]
+      },
+      "defaultCase": [
+        {
+          "name": "rejection_interview_orkes",
+          "taskReferenceName": "rejection_interview_orkes_ref",
+          "inputParameters": {},
+          "type": "SIMPLE",
+          "decisionCases": {},
+          "defaultCase": [],
+          "forkTasks": [],
+          "startDelay": 0,
+          "joinOn": [],
+          "optional": false,
+          "defaultExclusiveJoinTask": [],
+          "asyncComplete": false,
+          "loopOver": []
+        }
+      ],
+      "forkTasks": [],
+      "startDelay": 0,
+      "joinOn": [],
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopOver": [],
+      "evaluatorType": "value-param",
+      "expression": "hrinterview"
+    }
+  ],
+  "inputParameters": [],
+  "outputParameters": {},
+  "schemaVersion": 2,
+  "restartable": true,
+  "workflowStatusListenerEnabled": false,
+  "timeoutPolicy": "ALERT_ONLY",
+  "timeoutSeconds": 0,
+  "variables": {},
+  "inputTemplate": {}
+}
