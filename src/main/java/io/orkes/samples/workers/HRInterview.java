@@ -15,10 +15,10 @@ public class HRInterview implements Worker {
     public TaskResult execute(Task task) {
 
         TaskResult result = new TaskResult(task);
-        String name = (String) task.getInputData().get("name");
-        String street = (String) task.getInputData().get("firstname");
-        String city = (String) task.getInputData().get("age");
-        String state = (String) task.getInputData().get("position");
+        String firstname = (String) task.getInputData().get("firstname");
+        String lastname = (String) task.getInputData().get("lastname");
+        String age = (String) task.getInputData().get("age");
+        String position = (String) task.getInputData().get("position");
 
         try {
             boolean selected = Math.random() < 0.3;
